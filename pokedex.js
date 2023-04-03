@@ -1,5 +1,6 @@
 const divPokeDex$$ = document.querySelector("#card");
-const searchInput$$ = document.querySelector("#searchInput");
+// const divPoketitulo$$ = document.querySelector(".titulo");
+
 let pokemons = [];
 
 //Traer los pokemones con fetch
@@ -12,7 +13,10 @@ async function getPoke() {
         const objetoPokemon = {
           name: pokemon.name,
           image: pokemon.sprites.other.dream_world.front_default,
+          types: pokemon.types,
+          id: pokemon.id,
         };
+        // console.log(pokemon)
         pokemons.push(objetoPokemon);
       });
   }
@@ -24,6 +28,7 @@ function generateHTML(name, image) {
   const divContainer = document.createElement("div");
   divContainer.classList.add("pokemonCard");
   const h3$$ = document.createElement("h3");
+  h3$$.classList.add("nombres")
   const img$$ = document.createElement("img");
   h3$$.innerHTML = name;
   img$$.src = image;
@@ -38,7 +43,7 @@ async function printInHTML(searchTerm = "", pokemons) {
   divPokeDex$$.innerHTML = "";
 
   for (let i = 0; i < pokemons.length; i++) {
-    generateHTML(pokemons[i].name, pokemons[i].image);
+    generateHTML(pokemons[i].name, pokemons[i].image, pokemons[i].types, pokemons[i].id);
   }
 }
 
