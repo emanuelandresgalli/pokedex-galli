@@ -23,7 +23,7 @@ async function getPoke() {
   return pokemons;
 }
 
-//generar el html a partir de el nombre y la imagen del pokemon
+//generar el html con   el nombre y la imagen del pokemon
 function generateHTML(name, image) {
   const divContainer = document.createElement("div");
   divContainer.classList.add("pokemonCard");
@@ -37,8 +37,8 @@ function generateHTML(name, image) {
   divPokeDex$$.appendChild(divContainer);
 }
 
-//Imprimir el html, a partir de la funcion de la generacion, asignando los valores correspondientes
-async function printInHTML(searchTerm = "", pokemons) {
+//Imprime el html, a partir de la funcion de la generacion, asignando los valores correspondientes
+async function printInHTML(search = "", pokemons) {
   //Esta es la manera de limpiar el html antes de llenarlo, por que si no estuviera esta linea, se sobreescribiria cada vez que se llena
   divPokeDex$$.innerHTML = "";
 
@@ -46,7 +46,8 @@ async function printInHTML(searchTerm = "", pokemons) {
     generateHTML(pokemons[i].name, pokemons[i].image, pokemons[i].types, pokemons[i].id);
   }
 }
-
+// se utiliza para cargar la página web y ejecutar 
+// las acciones después de que se haya cargado completamente.
 window.onload = async () => {
   pokemons = await getPoke();
   printInHTML("", pokemons);
