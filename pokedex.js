@@ -53,6 +53,13 @@ window.onload = async () => {
   printInHTML("", pokemons);
 };
 
+const searchInput = document.querySelector('#searchInput');
+searchInput.addEventListener('input', () => {
+  const searchValue = searchInput.value.toLowerCase();
+  const filteredPokemons = pokemons.filter(pokemon => pokemon.name.includes(searchValue));
+  printInHTML(searchValue, filteredPokemons);
+});
+
 
 
 
